@@ -1,0 +1,16 @@
+<p>Bonjour
+	{% for emp in employe %}
+		{% if Mission.user is not null and emp.user is not null and Mission.user.id == emp.user.id %}
+			{{ emp.NomPrenom }}
+		{% endif %}
+	{% endfor %}
+</p>
+<p>Nous vous confirmons que votre mission du
+	{{ Mission.DateDebut|date('d/m/Y') }}
+	au
+	{{ Mission.DateFin|date('d/m/Y') }}
+
+	a été bien validée.</p>
+
+<p>Cordialement,</p>
+<p>L'équipe de notre site</p>

@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{Mission.Matricule}}
+{% endblock %}
+{% block body %}
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<img src="{{ asset('uploads/' ~ Mission.photo) }}" alt="{{ Mission.marque }}" class="car-image img-fluid">
+			</div>
+			<div class="col-md-6 car-info">
+				<h1>{{ Mission.marque }}</h1>
+				<ul>
+					<li>
+						<span>Modèle:</span>
+						{{ Mission.model }}
+					</li>
+					<li>
+						<span>Couleur:</span>
+						{{ Mission.couleur }}
+					</li>
+					<li>
+						<span>Catégorie:</span>
+						{{ Mission.categorie }}
+					</li>
+				</ul>
+
+			</div>
+		</div>
+	</div>
+	<style>
+		.car-info {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.car-info h1 {
+			font-size: 3rem;
+			color: #008080;
+			margin-bottom: 2rem;
+		}
+
+		.car-info ul {
+			list-style-type: none;
+			font-size: 2rem;
+			margin-left: 0;
+			padding-left: 0;
+		}
+
+		.car-info ul li {
+			margin-bottom: 1rem;
+		}
+
+		.car-info ul span {
+			font-weight: bold;
+			margin-right: 1rem;
+		}
+	</style>
+
+
+{% endblock %}

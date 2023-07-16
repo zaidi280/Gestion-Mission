@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Accueil
+
+{% endblock %}
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css') }}">
+{% endblock %}
+{% block body %}
+
+	<style>
+		h1,
+		hr,
+		.icon {
+			color: #05459D;
+		}
+		h1 {
+			border-bottom: 3px solid #05459D;
+			padding-bottom: 10px;
+		}
+	</style>
+
+	<br>
+
+	<h1>
+		<span class="icon">
+			<i class="fas fa-car"></i>
+		</span>Liste des voitures
+	</h1>
+	<hr>
+	<div class="card">
+		<div class="card-header">
+			Rechercher une Voiture
+		</div>
+		<div class="card-body">
+			<div class="form-group">
+				<input type="text" class="form-control" id="searchInput" placeholder="Search...">
+			</div>
+		</div>
+	</div>
+
+	<br>
+	<hr>
+	<table class="table">
+		<thead align="center">
+			<tr align="center">
+				<th scope="col">Matricule</th>
+				<th scope="col">Marque</th>
+				<th scope="col">Model</th>
+				<th scope="col">Couleur</th>
+				<th scope="col">Categorie</th>
+				<th scope="col">Action</th>
+			</tr>
+		</thead>
+		<tbody align="center">
+			{% for Miss in Mission %}
+
+				<tr scope="row" align="center">
+
+					<td>
+						{{Miss.Matricule}}
+					</td>
+					<td>
+						{{Miss.marque}}
+					</td>
+					<td>
+						{{Miss.model}}
+					</td>
+					<td>
+						{{Miss.couleur}}
+					</td>
+					<td>
+						{{Miss.categorie}}
+					</td>
+
+
+					<td>
+						<div class="btn-group" role="group">
+							<a href="{{ path('Voiture_edit',{id: Miss.id})}} " class="btn btn-primary">
+								<i class="fas fa-pencil-alt"></i>
+							</a>
+							<a href="{{ path('voiture_delete',{id: Miss.id})}}" onclick="return confirm('Etes-vous sur de supprimer cet voiture ?')" class="btn btn-danger">
+								<i class="fas fa-trash-alt"></i>
+							</a>
+							<a href="{{ path('show_Voiture',{id: Miss.id})}} " class="btn btn-info">
+								<i class="far fa-eye"></i>
+							</a>
+
+						</td>
+					</td>
+				</tr>
+			</tbody>
+		{% endfor %}
+	</table>
+	<script>
+		// Obtenir l'élément du champ de recherche
+var searchBox = document.getElementById("searchInput");
+
+// Ajouter un event listener au champ de recherche
+searchBox.addEventListener("keyup", function () {
+var searchTerm = searchBox.value.toLowerCase();
+var rows = document.querySelectorAll("table tbody tr");
+
+// Boucle sur toutes les lignes du tableau
+for (var i = 0; i < rows.length; i++) {
+var rowText = rows[i].textContent.toLowerCase();
+
+// Masquer la ligne si le terme de recherche n'est pas trouvé
+if (rowText.indexOf(searchTerm) === -1) {
+rows[i].style.display = "none";
+} else {
+rows[i].style.display = "";
+}
+}
+});
+	</script>
+
+
+{% endblock %}

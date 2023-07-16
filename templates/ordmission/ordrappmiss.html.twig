@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Rapport de mission
+{% endblock %}
+
+{% block body %}
+	<style>
+		h1,
+		hr,
+		.icon {
+			color: #05459D;
+		}
+		h1 {
+			border-bottom: 3px solid #05459D;
+			padding-bottom: 10px;
+
+		}
+	</style>
+	<br><br>
+
+	<h1>
+		<span>
+			<i class="bi bi-file-earmark-text"></i>
+		</span>
+		Rapport De Mission</h1>
+	<br>
+	<div class="d-flex justify-content-center">
+		<table class="table table-hover">
+			<thead>
+
+				<tr class="table-primary" align="center">
+					<th scope="col">Action</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody class="table-group-divider " align="center">
+				{% if Mission.rapport != null %}
+
+					<tr align="center">
+						<td>{{Mission.rapport}}</td>
+						<td class="table-light">{{Mission.rapport.description}}</td>
+					</tr>
+				{% endif %}
+			</tbody>
+		</table>
+	</div>
+	{% if is_granted('ROLE_PERSONNEL') %}
+		<a class="btn btn-primary" href="{{ path('ord-miss')}}">
+			<span>
+				<i class="bi bi-arrow-return-left"></i>
+			</span>
+			Retour</a>
+
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	Affecter mission
+{% endblock %}
+
+{% block body %}
+	<style>
+		h1,
+		.icon {
+			color: #05459D;
+		}
+		h1 {
+			border-bottom: 3px solid #05459D;
+			padding-bottom: 10px;
+		}
+	</style>
+	<br>
+	<h1>
+		<span class="icon">
+			<i class="bi bi-check2-circle"></i>
+		</span>Affecter Une Mission
+	</h1>
+	<br>
+	<table class="table table-hover">
+		<thead>
+			<tr class="table-primary" align="center">
+				<th>Numéro Mission</th>
+				<th>Date Creation</th>
+				<th>Destination</th>
+				<th>Sujet</th>
+				<th>Date Et Heure Debut</th>
+				<th>Date Et Heure Fin</th>
+				<th>Categorie</th>
+				<th>Accompagnent</th>
+				<th>Demandeur</th>
+
+			</tr>
+		</thead>
+		<tbody class="table-group-divider" align="center">
+			<tr align="center">
+				<td>
+					{{Miss.numMiss}}
+				</td>
+				<td class="table-light">
+					{{Miss.DateCreation|date('d-m-Y')}}
+				</td>
+				<td>
+					{{Miss.Destination}}
+				</td>
+				<td class="table-light">
+					{{Miss.Sujet}}
+				</td>
+				<td>
+					{{Miss.DateDebut|date('d-m-Y H:i:s')}}
+				</td>
+				<td class="table-light">
+					{{Miss.DateFin|date('d-m-Y H:i:s')}}
+				</td>
+				<td>
+					{{Miss.categorie}}
+				</td>
+				<td class="table-light">
+					{% for e in Miss.Employes %}
+						{{e}}
+						/
+					{% endfor %}
+
+				</td>
+				<td>
+					{% for emp in employes %}
+						{% if Miss.user is not null and emp.user is not null and Miss.user.id == emp.user.id %}
+							{{ emp.NomPrenom }}
+						{% endif %}
+					{% endfor %}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div>
+		{% for flash in app.flashes('error') %}
+			<div class="alert alert-danger">{{ flash }}</div>
+		{% endfor %}
+
+	</div>
+	<hr>
+	<br>
+	<form action="{{path('Affecter_Voiture', {id:Miss.id})}}" method="POST">
+		<label for="">Marque de voiture :
+		</label>
+		<select class="form-select" aria-label="Default select example" name="voiture" id="">
+			{% for voiture in voitures %}
+				<option value="{{voiture.id}}">
+					id:
+					{{voiture.id}}
+					| marque:{{voiture.marque}}| Matricule:{{voiture.Matricule}}
+					| Model:{{voiture.model}}</option>
+
+			{% endfor %}
+		</select>
+		<br>
+		<label for="">Chauffeur :</label>
+		<select class="form-select" aria-label="Default select example" name="employe" id="">
+			{% for employe in employes %}
+				<option value="{{employe.id}}">id:{{employe.id}}|{{employe.NomPrenom}}</option>
+
+			{% endfor %}
+		</select>
+		<br>
+		<button type="submit" class="btn btn-primary">Affecter</button>
+	</form>
+{% endblock %}

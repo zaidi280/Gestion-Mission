@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+	Imprimer
+{% endblock %}
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css') }}">
+
+{% endblock %}
+{% block body %}
+	<style>
+		h1,
+		hr,
+		.icon {
+			color: #05459D;
+		}
+		h1 {
+			border-bottom: 3px solid #05459D;
+			padding-bottom: 10px;
+
+		}
+	</style>
+
+	<br><br>
+	<h1>
+		<span>
+			<i class="bi bi-printer-fill"></i>
+		</span>Imprimer les ordres des missions</h1>
+	<br>
+	<div class="d-flex justify-content-center">
+		<table class="table table-hover">
+			<thead>
+
+				<tr class="table-primary" align="center">
+					<th scope="col">Destination</th>
+					<th scope="col">Sujet</th>
+					<th scope="col">Date Debut</th>
+					<th scope="col">Date Fin</th>
+					<th scope="col">Demandeur</th>
+					<th scope="col">Profession</th>
+					<th scope="col">Voiture</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody class="table-group-divider " align="center">
+				{% for Miss in Mission %}
+
+
+					<tr align="center">
+						<td class="table-light">
+							{{Miss.Destination}}
+						</td>
+						<td>
+							{{Miss.Sujet}}
+						</td>
+						<td class="table-light">
+							{{Miss.DateDebut|date('d-m-Y H:i:s')}}
+						</td>
+
+						<td>
+							{{Miss.DateFin|date('d-m-Y H:i:s')}}
+						</td>
+
+						<td class="table-light">
+							{% for emp in employe %}
+								{% if Miss.user is not null and emp.user is not null and Miss.user.id == emp.user.id %}
+									{{ emp.NomPrenom }}
+								{% endif %}
+							{% endfor %}
+
+						</td>
+						<td>
+							{% for emp in employe %}
+								{% if Miss.user is not null and emp.user is not null and Miss.user.id == emp.user.id %}
+									{{ emp.profession }}
+								{% endif %}
+							{% endfor %}
+						</td>
+						<td class="table-light">
+
+							{{Miss.voiture}}
+
+
+						</td>
+
+
+						<td class="table-light">
+							<a class="btn btn-primary" href="{{ path('imprord_miss',{id: Miss.id})}}">
+								<span>
+									<i class="bi bi-printer"></i>
+								</span>Imprimer</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

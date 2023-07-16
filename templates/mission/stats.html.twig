@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Statistique
+{% endblock %}
+{% block body %}
+	<style>
+		h1,
+		hr,
+		.icon {
+			color: #05459D;
+		}
+		h1 {
+			border-bottom: 3px solid #05459D;
+			padding-bottom: 10px;
+
+		}
+	</style>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="my-4">
+					<span>
+						<i class="bi bi-bar-chart-steps"></i>
+					</span>
+					Statistiques</h1>
+
+
+				<canvas id="graph" width="400" height="120"></canvas>
+				<script>
+
+					let Missions = document.querySelector("#graph")
+let Misschart = new Chart(graph, {
+type: "horizontalBar",
+data: {
+labels: {{ dates|raw }},
+datasets: [
+{
+label: "Nombre de mission",
+data: {{ misscount|raw }},
+backgroundColor: [
+"rgba(255, 99, 132, 0.2)",
+"rgba(255, 159, 64, 0.2)",
+"rgba(255, 205, 86, 0.2)",
+"rgba(75, 192, 192, 0.2)",
+"rgba(54, 162, 235, 0.2)",
+"rgba(153, 102, 255, 0.2)",
+"rgba(201, 203, 207, 0.2)"
+],
+borderColor: [
+"rgb(255, 99, 132)",
+"rgb(255, 159, 64)",
+"rgb(255, 205, 86)",
+"rgb(75, 192, 192)",
+"rgb(54, 162, 235)",
+"rgb(153, 102, 255)",
+"rgb(201, 203, 207)"
+],
+borderWidth: 1
+
+}
+]
+
+},
+options: {
+scales: {
+xAxes: [
+{
+ticks: {
+beginAtZero: true,
+stepSize: 1
+}
+}
+]
+}
+}
+})
+				</script>
+
+			</div>
+		</div>
+	</div>
+	<div class="alert alert-info mt-3" role="alert">
+		<h4 class="alert-heading">
+			<span>
+				<i class="bi bi-lightbulb"></i>
+			</span>
+			Remarque</h4>
+		<p class="mb-0">Ce graphique en barres montre le nombre de missions terminées par les employés pour chaque mois de chaque année. L'axe des X représente les mois de l'année, tandis que l'axe des Y représente le nombre de missions terminées. La hauteur de chaque barre représente le nombre de missions terminées par les employés pendant le mois correspondant. Ce graphique peut être utilisé pour identifier les tendances dans l'achèvement des missions des employés au fil du temps.</p>
+	</div>
+{% endblock %}

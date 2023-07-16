@@ -1,0 +1,146 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+	Liste des ordres
+{% endblock %}
+
+{% block body %}
+	<style>
+		h1,
+		hr,
+		.icon {
+			color: #05459D;
+		}
+		h1 {
+			border-bottom: 3px solid #05459D;
+			padding-bottom: 10px;
+
+		}
+	</style>
+	<br><br>
+
+	<h1>
+		<span>
+			<i class="bi bi-clipboard-check"></i>
+		</span>Liste des ordres des missions</h1>
+	<br>
+	<div class="card shadow-sm">
+		<div class="card-header bg-light">
+			<h4 class="card-title mb-0 text-muted">Rechercher</h4>
+		</div>
+		<div class="card-body">
+			<div class="form-row">
+				<div class="col">
+					<label for="searchInputName" class="form-label">Rechercher par nom:</label>
+					<input type="text" class="form-control" id="searchInputName" placeholder="Entrez le nom de l'employé">
+				</div>
+				<div class="col">
+					<label for="searchInputMonth" class="form-label">Rechercher par mois:</label>
+					<input type="text" class="form-control" id="searchInputMonth" placeholder="Entrez le mois de la mission">
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<br>
+	<div class="d-flex justify-content-center">
+		<table class="table table-hover">
+			<thead>
+
+				<tr class="table-primary" align="center">
+					<th scope="col">Destination</th>
+					<th scope="col">Sujet</th>
+					<th scope="col">Date Debut</th>
+					<th scope="col">Date Fin</th>
+					<th scope="col">Demandeur</th>
+					<th scope="col">Profession</th>
+					<th scope="col">Voiture</th>
+
+				</tr>
+			</thead>
+			<tbody class="table-group-divider " align="center">
+				{% for Miss in Mission %}
+
+					{% if Miss.voiture != null %}
+
+
+						<tr align="center">
+							<td class="table-light">
+								{{Miss.Destination}}
+							</td>
+							<td>
+								{{Miss.Sujet}}
+							</td>
+							<td class="table-light">
+								{{Miss.DateDebut|date('d-m-Y H:i:s')}}
+							</td>
+
+							<td>
+								{{Miss.DateFin|date('d-m-Y H:i:s')}}
+							</td>
+
+							<td class="table-light">
+								{% for emp in employe %}
+									{% if Miss.user is not null and emp.user is not null and Miss.user.id == emp.user.id %}
+										{{ emp.NomPrenom }}
+									{% endif %}
+								{% endfor %}
+
+							</td>
+							<td>
+
+								{% for emp in employe %}
+									{% if Miss.user is not null and emp.user is not null and Miss.user.id == emp.user.id %}
+										{{ emp.profession }}
+									{% endif %}
+								{% endfor %}
+
+
+							</td>
+							<td class="table-light">
+
+								{{Miss.voiture}}
+
+
+							</td>
+
+
+						</tr>
+					{% endif %}
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<script>
+		// Obtenir les éléments des champs de recherche
+var searchBoxName = document.getElementById("searchInputName");
+var searchBoxMonth = document.getElementById("searchInputMonth");
+
+// Ajouter un event listener aux champs de recherche
+searchBoxName.addEventListener("keyup", filterTable);
+searchBoxMonth.addEventListener("keyup", filterTable);
+
+function filterTable() {
+var searchTermName = searchBoxName.value.toLowerCase().trim();
+var searchTermMonth = searchBoxMonth.value.toLowerCase().trim();
+var rows = document.querySelectorAll("table tbody tr");
+
+// Boucle sur toutes les lignes du tableau
+for (var i = 0; i < rows.length; i++) {
+var rowTextName = rows[i].querySelectorAll("td")[4].textContent.toLowerCase().trim();
+var rowTextMonth = rows[i].querySelectorAll("td")[2].textContent.toLowerCase().trim();
+
+// Masquer la ligne si le terme de recherche n'est pas trouvé
+if (searchTermName !== "" && rowTextName.indexOf(searchTermName) === -1) {
+rows[i].style.display = "none";
+} else if (searchTermMonth !== "" && rowTextMonth.indexOf(searchTermMonth) === -1) {
+rows[i].style.display = "none";
+} else {
+rows[i].style.display = "";
+}
+}
+}
+	</script>
+{% endblock %}

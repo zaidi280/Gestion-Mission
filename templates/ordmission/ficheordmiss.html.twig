@@ -1,0 +1,171 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	{% block stylesheets %}
+
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+	{% endblock %}
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		header {
+			background-color: #fff;
+			padding: 10px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			position: flex;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 1;
+		}
+
+		.header-left {
+			display: flex;
+			align-items: center;
+		}
+
+		.header-left img {
+			height: 45px;
+			margin-right: 0;
+		}
+		.header-right img {
+			height: 90px;
+		}
+		@media print {
+			.header-right img {
+				display: block;
+			}
+		}
+
+		@media print {
+			#print-button {
+				display: none;
+			}
+		}
+		@media print {
+			#retour {
+				display: none;
+			}
+		}
+		footer {
+			background-color: #ffffff;
+			padding: 40px 0;
+		}
+
+		.footer-container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		.footer-logo img {
+			max-width: 200px;
+		}
+
+
+		.separator {
+			height: 5px;
+			background-color: #0e0e0e;
+			border: none;
+			border-top: 1px solid #0c0c0c;
+			border-bottom: 1px solid #090909;
+		}
+	</style>
+	<header>
+		<div class="header-left">
+			<img src="{{ asset('logo/logo-site-1.png', null) }}" alt="Image de left">
+		</div>
+		<div class="header-right">
+			<img src="{{ asset('logo/ministere.png', null) }}" alt="Image de right">
+		</div>
+	</header>
+	<div style=" padding: 20px; text-align: center;">
+		<h1 style="color: #333;">Ordre De Mission</h1>
+		<hr style="border: 1px solid #333; margin: 20px auto;">
+		<p style="font-size: 18px; line-height: 1.5; margin-bottom: 10px; text-align: left; text-justify: inter-word;">
+
+
+			Le Président de l'Université autorise le titulaire
+			<strong>{{Nom_Prenom}}</strong>
+			d'une carte d'identité nationale N° :
+			<strong>{{numcarte}}</strong>
+			<br>
+			profession :
+			<strong>
+				{{ grade }}
+
+			</strong>
+			à la Présidence de l'Université de Sfax 
+																																																																																																																																																																																																																																																																 à se déplacer de Sfax à
+
+			<strong>{{ Mission.Destination }}</strong>
+			<br>
+			via la voiture administrative N° :
+			<strong>{{ Mission.voiture }}</strong>
+
+			aller-retour pour
+			<strong>{{ Mission.sujet }}</strong>
+
+
+		</p>
+	</div>
+	<table class="table table-hover">
+		<thead>
+			<tr class="table-primary" align="center">
+				<th>Destination</th>
+				<th>Horaire Aller</th>
+				<th>Horaire Retour</th>
+				<th>Date Aller-Retour
+				</th>
+				<th>observation</th>
+
+
+			</tr>
+		</thead>
+		<tbody class="table-group-divider" align="center">
+
+			<tr align="center">
+				<td>
+					{{Mission.Destination}}
+				</td>
+				<td class="table-light">
+					{{Mission.DateDebut|date('H:i:s')}}
+				</td>
+				<td>
+					{{Mission.DateFin|date('H:i:s')}}
+				</td>
+				<td class="table-light">
+					de
+					{{Mission.DateDebut|date('d-m-Y')}}
+					<br>
+					à
+					{{Mission.DateFin|date('d-m-Y')}}
+				</td>
+				<td></td>
+
+			</tr>
+		</tbody>
+	</table>
+	{% if is_granted('ROLE_PERSONNEL') %}
+		<a class="btn btn-primary" href="{{ path('ord_valid',{id: Mission.id})}}" onclick="return confirm('Etes-vous sur de valider cet ordre de mission  ?')">
+			<span>
+				<i class="bi bi-check2-circle"></i>
+			</span>Valider</a>
+		<a class="btn btn-primary" href="{{ path('ord-miss')}}">
+			<span>
+				<i class="bi bi-arrow-return-left"></i>
+			</span>
+			Retour</a>
+	{% endif %}
+
+
+{% endblock %}

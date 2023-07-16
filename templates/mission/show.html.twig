@@ -1,0 +1,210 @@
+{# {% extends 'base.html.twig' %} #}
+{% block title %}{% endblock %}
+
+{% block body %}
+	{% block stylesheets %}
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	{% endblock %}
+	<!DOCTYPE html>
+	<html>
+
+
+		<head>
+			<meta charset="utf-8">
+			<style>
+				body {
+					font-family: Arial, sans-serif;
+					margin: 0;
+					padding: 0;
+				}
+
+				header {
+					background-color: #fff;
+					padding: 10px;
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					position: flex;
+					top: 0;
+					left: 0;
+					right: 0;
+					z-index: 1;
+				}
+
+				.header-left {
+					display: flex;
+					align-items: center;
+				}
+
+				.header-left img {
+					height: 45px;
+					margin-right: 0;
+				}
+
+				.header-center img {
+					height: 60px;
+				}
+
+				.header-right img {
+					height: 90px;
+				}
+
+				@media print {
+					.header-right img {
+						display: block;
+					}
+				}
+
+				@media print {
+					#print-button {
+						display: none;
+					}
+				}
+				@media print {
+					#retour {
+						display: none;
+					}
+				}
+				footer {
+					background-color: #ffffff;
+					padding: 40px 0;
+				}
+
+				.footer-container {
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: space-between;
+					max-width: 1200px;
+					margin: 0 auto;
+				}
+
+				.footer-logo img {
+					max-width: 200px;
+				}
+
+
+				.separator {
+					height: 5px;
+					background-color: #0e0e0e;
+					border: none;
+					border-top: 1px solid #0c0c0c;
+					border-bottom: 1px solid #090909;
+				}
+			</style>
+		</head>
+
+
+		<body>
+
+			<header>
+				<div class="header-left">
+					<img src="{{ asset('logo/logo-site-1.png', null) }}" alt="Image de left">
+				</div>
+				<div class="header-center">
+					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Coat_of_arms_of_Tunisia.svg/800px-Coat_of_arms_of_Tunisia.svg.png" alt="Image de centre">
+				</div>
+				<div class="header-right">
+					<img src="{{ asset('logo/ministere.png', null) }}" alt="Image de right">
+				</div>
+			</header>
+			<br>
+			<main>
+
+				<div class="container">
+					<h1 style="text-align: center;">Demande de Mission</h1>
+					<br>
+					<div class="mission">
+						<p>
+
+							<strong>Catégorie:</strong>
+
+							{{ Mission.categorie}}</p>
+						<p>
+							<strong>Département:</strong>
+							{{dep}}</p>
+
+						<p>
+							<strong>Demandeur:</strong>
+							{{Nom_Prenom ~ ' ' ~ grade}}
+
+						</p>
+						<p>
+							<strong>Numéro Telephone</strong>
+
+							{{NumTell}}
+
+
+						</p>
+						<p>
+							<strong>Numéro Fax</strong>
+							{{NumFax}}
+
+						</p>
+						<p>
+							<strong>Date création:</strong>
+							{{Mission.DateCreation|date('d-m-Y') ~ ' ' ~ Mission.numMiss }}</p>
+						<p>
+							<strong>Destination:</strong>
+							{{Mission.Destination}}</p>
+						<p>
+							<strong>Sujet:</strong>
+							{{Mission.Sujet}}</p>
+
+
+						<p>
+							<strong>Accompagnant:</strong>
+							{% for e in Mission.Employes %}
+
+								{{e.NomPrenom ~ ' ' ~ e.profession}}
+								/
+							{% endfor %}
+						</p>
+						<p>
+							<strong>Matériel:</strong>
+							{{Mission.materiel}}</p>
+						<p></p>
+						<p>
+							<strong>Date et Heure Début:</strong>
+							{{Mission.DateDebut|date('d-m-Y H:i:s')}}</p>
+
+						<p>
+							<strong>Date et Heure Fin:</strong>
+							{{Mission.DateFin|date('d-m-Y H:i:s')}}</p>
+
+
+					</p>
+				</div>
+				<br>
+				<p>
+					<strong>la signature et le cachet</strong>
+				</p>
+			</body>
+		</body>
+	</html>
+</div></body></html></main><br><button id="print-button" class="btn btn-success"><span><i class="bi bi-printer"></i></span>Imprimer</button><a id="retour" class="btn btn-primary" href="{{ path('app_userindex')}}">Retour</a><br><br><br><div class="separator"></div><footer><div class="footer-container"><div class="footer-logo">
+<img src="{{ asset('logo/logo-site-1.png', null) }}" alt="Your Logo"></div><br><br><div>
+
+<p>
+	<i class="bi bi-geo-alt"></i>
+	Université de Sfax. Route de l'Aéroport Km 0.5 BP 1169 .3029 Sfax</p>
+
+<p>
+	<i class="bi bi-telephone"></i>
+	+216 74 244 423 - +216 74 248 233 - +216 74 242 951 - +216
+																																																																																																																																																																																																																																																																																																																				                    74 247 954</p>
+<p>
+	<i class="bi bi-globe"></i>
+	universite.sfax@usf.tn</p></div></div></footer></body><script>var printButtons = document.querySelectorAll('#print-button');
+
+for (var i = 0; i < printButtons.length; i++) {
+printButtons[i].addEventListener('click', function () {
+var row = this.parentNode.parentNode;
+var printContents = row.innerHTML;
+var originalContents = document.body.innerHTML;
+document.body.innerHTML = printContents;
+window.print();
+document.body.innerHTML = originalContents;
+
+});
+}</script></html>{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle_Voiture
+{% endblock %}
+
+{% block body %}
+	<style>
+		h1,
+		hr,
+		.icon {
+			color: #05459D;
+		}
+		h1 {
+			border-bottom: 3px solid #05459D;
+			padding-bottom: 10px;
+		}
+	</style>
+	<br>
+	<h1>
+		<span class="icon">
+			<i class="fas fa-car"></i>
+		</span>Creation d'une nouvelle voiture
+	</h1>
+	<br>
+
+	{{include("voiture/form.html.twig") }}
+{% endblock %}

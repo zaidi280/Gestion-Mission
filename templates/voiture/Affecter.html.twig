@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Mission demander
+{% endblock %}
+
+{% block body %}
+	<style>
+		h1,
+		.icon {
+			color: #05459D;
+		}
+		h1 {
+			border-bottom: 3px solid #05459D;
+			padding-bottom: 10px;
+		}
+	</style>
+	{% block stylesheets %}
+		{{ parent() }}
+		<link rel="stylesheet" href="{{ asset('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css') }}">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+	{% endblock %}
+	<br>
+
+	<h1>
+		<span class="icon">
+			<i class="bi bi-list-check"></i>
+		</span>Liste des demandes
+	</h1>
+	<br>
+	<table class="table table-hover">
+		<thead>
+			<tr class="table-primary" align="center">
+				<th>Numéro Mission</th>
+				<th>Date Creation</th>
+				<th>Destination</th>
+				<th>Sujet</th>
+				<th>Date Debut</th>
+				<th>Date Fin</th>
+				<th>Categorie</th>
+				<th>Accompagnent</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody class="table-group-divider" align="center">
+			{% for Miss in Mission %}
+				<tr align="center">
+					<td>
+						{{Miss.numMiss}}
+					</td>
+					<td class="table-light">
+						{{Miss.DateCreation|date('d-m-Y')}}
+					</td>
+					<td>
+						{{Miss.Destination}}
+					</td>
+					<td class="table-light">
+						{{Miss.Sujet}}
+					</td>
+					<td>
+						{{Miss.DateDebut|date('d-m-Y H:i:s')}}
+					</td>
+
+					<td class="table-light">
+						{{Miss.DateFin|date('d-m-Y H:i:s')}}
+					</td>
+
+					<td>
+						{{Miss.categorie}}
+					</td>
+					<td class="table-light">
+						{% for e in Miss.Employes %}
+							{{e}}
+							/
+						{% endfor %}
+
+					</td>
+
+					<td>
+
+						<a href="{{ path('Aff_Voiture',{id: Miss.id})}}" class="btn btn-secondary">
+							<i class="fas fa-car"></i>
+							Affecter
+						</a>
+
+					</td>
+
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

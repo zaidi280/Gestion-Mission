@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+	<style>
+		h1,
+		hr,
+		.icon {
+			color: #05459D;
+		}
+		h1 {
+			border-bottom: 3px solid #05459D;
+			padding-bottom: 10px;
+		}
+	</style>
+	<br>
+	<br>
+	<h1>
+		<span>
+			<i class="bi bi-file-earmark-plus"></i>
+		</span>
+		Ajouter un rapport</h1>
+	<br>
+	{{ form_start(formMission) }}
+	{{ form_row(formMission.action) }}
+	{{ form_row(formMission.description) }}
+	{{ form_rest(formMission) }}
+
+	<input class="btn btn-primary" type="submit" value="{{valeurBtnSubmit|default("Ajouter le rapport") }}" formnovalidate>
+
+	{{ form_end(formMission) }}
+{% endblock %}

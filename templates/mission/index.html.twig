@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+	Accueil
+{% endblock %}
+
+
+{% block body %}
+
+	<style>
+		h1,
+		hr,
+		.icon {
+			color: #05459D;
+		}
+		h1 {
+			border-bottom: 3px solid #05459D;
+			padding-bottom: 10px;
+
+		}
+	</style>
+
+
+	<br>
+
+	<div class=" justify-content-center" style="width:100%;">
+
+		<h1>
+			<span class=" icon">
+				<i class="bi bi-list-task"></i>
+			</span>Liste des missions
+		</h1>
+		<br>
+
+		<table class="table">
+			<thead>
+				<tr class="table-primary" align="center">
+					<th scope="col">Destination</th>
+					<th scope="col">Sujet</th>
+					<th scope="col">Date Debut</th>
+					<th scope="col">Date Fin</th>
+					<th scope="col">Categorie</th>
+					<th scope="col">Accompagnant</th>
+					<th scope="col">Chauffeur</th>
+					<th scope="col">Voiture</th>
+					<th scope="col">Materiel</th>
+					<th scope="col">Rapport</th>
+					<th scope="col">accomp</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody class="table-group-divider " align="center">
+				{% for Miss in Mission %}
+					<tr align="center">
+						<td class="table-light">
+							{{Miss.Destination}}
+						</td>
+						<td>
+							{{Miss.Sujet}}
+						</td>
+						<td class="table-light">
+							{{Miss.DateDebut|date('d-m-Y H:i:s')}}
+						</td>
+						<td>
+							{{Miss.DateFin|date('d-m-Y H:i:s')}}
+						</td>
+						<td class="table-light">
+							{{Miss.categorie}}
+						</td>
+						<td>
+							{% for e in Miss.Employes %}
+								{{e}}
+								/
+							{% endfor %}
+
+						</td>
+						<td class="table-light">
+							{{Miss.employe}}
+						</td>
+						<td>
+
+							{{Miss.voiture}}
+
+						</td>
+						<td class="table-light">
+							{{Miss.materiel}}
+						</td>
+						<td>
+							{{Miss.rapport}}
+						</td>
+						<td>{{Miss.accompext}}</td>
+
+						<td>
+							<div class="btn-group" role="group">
+								{% if is_granted('ROLE_EMPLOYE') %}
+									<a href="{{ path('Mission_edit',{id: Miss.id})}} " class="btn btn-primary">
+										<i class="fas fa-pencil-alt"></i>
+									</a>
+									<a class="btn btn-danger" href="{{ path('Mission_delete',{id: Miss.id})}}" onclick="return confirm('Etes-vous sur de supprimer la demande {{Miss.numMiss}}?')">
+										<i class="fas fa-trash-alt"></i>
+									</a>
+									<a href="{{ path('show_Mission',{id: Miss.id})}} " class="btn btn-info">
+										<i class="far fa-eye"></i>
+									</a>
+									{% set now = "now"|date('Y-m-d') %}
+									{% if now >   Miss.DateFin|date('Y-m-d')%}
+										<a href="{{ path('rapp_create',{id: Miss.id})}}" class="btn btn-primary">
+											<i class="bi bi-file-earmark-plus"></i>
+										</a>
+									{% endif %}
+								{% endif %}
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</tbody>
+		</tr>
+	{% endfor %}
+</table></div>{% endblock %}

@@ -1,0 +1,14 @@
+{{form_start(formVoiture)}}
+{{form_row(formVoiture.Matricule,{'attr':{'placeholder':"Matricule de la voiture"}})}}
+
+{{form_row(formVoiture.marque,{'attr':{'placeholder':"marque de la voiture"}})}}
+{{form_row(formVoiture.model,{'attr':{'placeholder':"model de la voiture"}})}}
+{{form_row(formVoiture.couleur,{'attr':{'placeholder':"couleur de la voiture"}})}}
+{{form_row(formVoiture.categorie,{'attr':{'placeholder':"categorie"}})}}
+
+
+{{ form_rest(formVoiture) }}
+
+<input class="btn btn-primary" type="submit" value="{{valeurBtnSubmit|default("Ajouter la voiture") }}" formnovalidate>
+
+{{form_end(formVoiture)}}

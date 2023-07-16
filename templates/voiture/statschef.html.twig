@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Statistique
+{% endblock %}
+{% block body %}
+	<style>
+		h1,
+		hr,
+		.icon {
+			color: #05459D;
+		}
+		h1 {
+			border-bottom: 3px solid #05459D;
+			padding-bottom: 10px;
+
+		}
+	</style>
+	<br>
+	<h1>
+		<span>
+			<i class="bi bi-bar-chart-steps"></i>
+		</span>Statistique</h1>
+	<br>
+	<canvas id="graphchef" width="400" height="100"></canvas>
+
+	<script>
+
+		let Missions = document.querySelector("#graph")
+let Misschart = new Chart(graphchef, {
+type: "horizontalBar",
+data: {
+labels: {{ models|raw }},
+datasets: [
+{
+label: "nombre de mission valider pour chaque voiture",
+data: {{ voitcount|raw }},
+backgroundColor: [
+"rgba(255, 99, 132, 0.2)",
+"rgba(255, 159, 64, 0.2)",
+"rgba(255, 205, 86, 0.2)",
+"rgba(75, 192, 192, 0.2)",
+"rgba(54, 162, 235, 0.2)",
+"rgba(153, 102, 255, 0.2)",
+"rgba(201, 203, 207, 0.2)"
+],
+borderColor: [
+"rgb(255, 99, 132)",
+"rgb(255, 159, 64)",
+"rgb(255, 205, 86)",
+"rgb(75, 192, 192)",
+"rgb(54, 162, 235)",
+"rgb(153, 102, 255)",
+"rgb(201, 203, 207)"
+],
+borderWidth: 1
+
+}
+]
+
+},
+options: {
+scales: {
+xAxes: [
+{
+ticks: {
+beginAtZero: true,
+stepSize: 1
+}
+}
+]
+}
+}
+})
+	</script>
+	<div class="alert alert-info mt-3" role="alert">
+		<h4 class="alert-heading">Remarque</h4>
+		<p class="mb-0">Ce graphique montre le nombre de missions validées pour chaque modèle de voitures. Comme vous pouvez le voir, l'axe des X représente les différents modèles de voitures, tandis que l'axe des Y montre le nombre de missions validées pour chaque modèle. Chaque barre sur le graphique représente le nombre de missions validées pour chaque voiture d'un modèle spécifique. Plus la barre est haute, plus nous avons de voitures pour ce modèle en particulier.</p>
+	</div>
+
+{% endblock %}

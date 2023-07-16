@@ -1,0 +1,17 @@
+{{form_start(formMission)}}
+
+{{form_row(formMission.categorie)}}
+{{form_row(formMission.destination)}}
+{{form_row(formMission.Sujet,{'attr':{'placeholder':"Sujet de mission"}})}}
+{{form_row(formMission.materiel,{'attr':{'placeholder':"Materiel a transporter a la Mission"}})}}
+{{form_row(formMission.DateDebut)}}
+{{form_row(formMission.DateFin)}}
+
+<button type="button" class="btn btn-success your-add-button-class">Add Field</button>
+
+
+{{ form_rest(formMission) }}
+
+<input class="btn btn-primary" type="submit" value="{{valeurBtnSubmit|default("Ajouter la Mission") }}" formnovalidate>
+
+{{form_end(formMission)}}

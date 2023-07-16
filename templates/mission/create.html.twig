@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle_Mission
+{% endblock %}
+
+
+{% block body %}
+	<style>
+		h1,
+		hr,
+		.icon {
+			color: #05459D;
+		}
+		h1 {
+			border-bottom: 3px solid #05459D;
+			padding-bottom: 10px;
+		}
+	</style>
+	<br>
+	<h1>
+		<span class="icon">
+			<i class="bi bi-file-earmark-plus"></i>
+		</span>Creation d'une nouvelle mission</h1>
+	<br>
+
+
+	<form action="{{ path('Mission_create') }}" method="POST">
+
+
+		{{form_start(formMission)}}
+
+		{{form_row(formMission.categorie)}}
+		{{form_row(formMission.destination)}}
+		{{form_row(formMission.Sujet,{'attr':{'placeholder':"Sujet de mission"}})}}
+		{{form_row(formMission.materiel,{'attr':{'placeholder':"Materiel a transporter a la Mission"}})}}
+		<button class="btn btn-success" id="add">Ajouter accompagnant externe</button>
+		<div id="fields"></div>
+		{{form_row(formMission.DateDebut)}}
+		{{form_row(formMission.DateFin)}}
+
+
+		{{ form_rest(formMission) }}
+
+		<input class="btn btn-primary" type="submit" value="{{valeurBtnSubmit|default("Ajouter la Mission") }}" formnovalidate>
+
+		{{form_end(formMission)}}
+
+		<script>
+			const addButton = document.querySelector("#add");
+const fieldsDiv = document.querySelector("#fields");
+
+addButton.addEventListener("click", addField);
+
+function addField(event) {
+event.preventDefault()
+const newField = document.createElement("input");
+newField.type = "text";
+newField.name = "champ[]";
+fieldsDiv.appendChild(newField);
+}
+		</script>
+	</form>
+{% endblock %}

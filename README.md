@@ -32,10 +32,10 @@ In this context, the University of Sfax has proposed that we design and develop 
 ### Objective to achieve
 Our application titled 'Management of Internal and External Missions' is designed to enhance the process of missions within the University of Sfax. In this context, we present the following main objectives:
 
-✓ Expense Optimization: Our application ensures better cost management and reduces overall expenses for the institution.
-✓ Improved Efficiency and Productivity: The institution will effectively manage various missions, leading to improved efficiency and 
+- Expense Optimization: Our application ensures better cost management and reduces overall expenses for the institution.
+- Improved Efficiency and Productivity: The institution will effectively manage various missions, leading to improved efficiency and 
   productivity.
-✓ Facilitating Communication and Collaboration: The application facilitates communication and collaboration among the different members 
+- Facilitating Communication and Collaboration: The application facilitates communication and collaboration among the different members 
   of the University of Sfax, enhancing the quality of work.
-✓ Easy Access: Our application can centrally manage information, providing easy access and improved visibility for users.
+- Easy Access: Our application can centrally manage information, providing easy access and improved visibility for users.
 </p>

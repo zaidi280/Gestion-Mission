@@ -1,4 +1,4 @@
-# Gestion-Mission
+# Management of Internal and External Missions
 ## Introduction
 <p>Currently, the management of missions and tasks for different members of the University of Sfax is done manually. In the absence of computer tools, it is difficult to handle these tasks manually, leading to limited communication and additional costs due to the time spent on planning, monitoring, and resource management.
 
@@ -29,4 +29,13 @@ In this context, the University of Sfax has proposed that we design and develop 
 - Track the number of missions validated
 - Track the number of missions reimbursed
 - Track the number of missions performed for each car
+### Objective to achieve
+Our application titled 'Management of Internal and External Missions' is designed to enhance the process of missions within the University of Sfax. In this context, we present the following main objectives:
+
+✓ Expense Optimization: Our application ensures better cost management and reduces overall expenses for the institution.
+✓ Improved Efficiency and Productivity: The institution will effectively manage various missions, leading to improved efficiency and 
+  productivity.
+✓ Facilitating Communication and Collaboration: The application facilitates communication and collaboration among the different members 
+  of the University of Sfax, enhancing the quality of work.
+✓ Easy Access: Our application can centrally manage information, providing easy access and improved visibility for users.
 </p>

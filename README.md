@@ -69,4 +69,6 @@ An actor is an element that interacts with a system to fulfill a specific need. 
 - Manage cars
 - Assign cars and drivers
 ## Use case diagram
+The functionality of the system is represented in the form of actions and reactions in a use case diagram, which describes the various features of the system from the perspective of the involved actors. this image shows this set of actions and reactions.
+![Cas d'utilisation](https://github.com/zaidi280/Gestion-Mission/assets/81488144/594d0df8-e2be-40ab-a4e5-4f489f7c6856)
 </p>

@@ -9,7 +9,7 @@ In this context, the University of Sfax has proposed that we design and develop 
 ## Functionalities
 <p>Regarding our application, we present the following main functionalities:
 
-### Mission Management:
+### Mission Management :
 
 - Manage mission requests
 - Manage mission orders
@@ -17,14 +17,14 @@ In this context, the University of Sfax has proposed that we design and develop 
 - Draft mission reports
 - Car Management:
 
-### Manage cars
+### Manage cars :
 - Assign cars and drivers
 - Reimbursement Management:
 - Manage reimbursements for daily travel allowances
-### User Management:
+### User Management :
 - Manage accounts
 - Manage employees
-### Tracking Statistics:
+### Tracking Statistics :
 - Track the number of missions completed by each employee
 - Track the number of missions validated
 - Track the number of missions reimbursed
@@ -38,4 +38,35 @@ Our application titled 'Management of Internal and External Missions' is designe
 - Facilitating Communication and Collaboration: The application facilitates communication and collaboration among the different members 
   of the University of Sfax, enhancing the quality of work.
 - Easy Access: Our application can centrally manage information, providing easy access and improved visibility for users.
+## Actors
+An actor is an element that interacts with a system to fulfill a specific need. Actors can take various forms, such as operators, individuals, software, or hardware. They have the ability to exchange, consult, or modify information with the system in question. In the current context, we can identify the following actors:
+
+### Administrator
+- Manage user accounts
+- Manage employees
+
+### General Secretary
+- Manage validation of mission requests
+- View statistics
+
+### Employee
+- Manage mission requests
+- Draft mission reports
+- View missions
+- View statistics
+
+### Financial Department
+- Manage reimbursements
+- View calculation notes
+- View statistics
+
+### Personnel Department
+- Validate mission orders
+- View mission reports
+- View mission orders
+
+### Fleet Manager
+- Manage cars
+- Assign cars and drivers
+## Use case diagram
 </p>

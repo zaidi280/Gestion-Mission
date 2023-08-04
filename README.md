@@ -71,4 +71,17 @@ An actor is an element that interacts with a system to fulfill a specific need. 
 ## Use case diagram
 The functionality of the system is represented in the form of actions and reactions in a use case diagram, which describes the various features of the system from the perspective of the involved actors. this image shows this set of actions and reactions.
 ![Cas d'utilisation](https://github.com/zaidi280/Gestion-Mission/assets/81488144/594d0df8-e2be-40ab-a4e5-4f489f7c6856)
+## Conclusion 
+As part of this project, we have designed and developed a web application aimed at automating tasks for members of the University of Sfax. This application allows for the consultation, assignment, and validation of mission orders, as well as the management of mission requests.
+
+Regarding the design, we have taken into account the main functionalities, starting with business modeling. We then presented sequence and class diagrams using the UML modeling language.
+
+This work has allowed us to put into practice the theoretical knowledge we acquired throughout our education, as well as to discover new innovative technologies. We also had the opportunity to apply the complete software development cycle and become familiar with the UML modeling language and the Symfony framework.
+
+Our daily internship at the University of Sfax has also been an opportunity to enhance our non-technical skills and improve our communication in a professional environment.
+
+We have also considered our perspective for the future. We plan to implement additional features to enhance the user experience and meet the evolving needs of the University of Sfax. We aim to optimize the application's performance, add reporting modules, prepare an Arabic version for the application, and explore possibilities for integration with other existing systems.
+
+In conclusion, we hope that our efforts will bring this project to life and that we have succeeded in meeting your expectations.
+u can see more details in this pdf [Rapport-Fin-SaifeddineZAIDI.pdf](https://github.com/zaidi280/Gestion-Mission/files/12263012/Rapport-Fin-SaifeddineZAIDI.pdf)
 </p>
